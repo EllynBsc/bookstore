@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Book catalogue</h1>
+  <ol>
+    <% @books.each do |book| %>
+      <li>
+        <strong><%= book.title %></strong> by <%= book.author.name %>
+        <%#= book.author.address %>
+
+        <!-- book.author.name is a N+1 QUERY as i'm try to get the information of the parent table -->
+
+        <!-- we want to make sure that when we have a n+1 query it's not getting triggered in the view level but in the controller level -->
+      </li>
+    <% end %>
+  </ol>
+</div>
